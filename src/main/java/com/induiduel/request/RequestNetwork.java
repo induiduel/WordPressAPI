@@ -3,7 +3,10 @@ package com.induiduel.request;
 import android.app.Activity;
 
 import java.util.HashMap;
-
+/**
+ * induiduel r10.net
+ * nofrost.life Instagram
+ * */
 public class RequestNetwork {
     private HashMap<String, Object> params = new HashMap<>();
     private HashMap<String, Object> headers = new HashMap<>();
