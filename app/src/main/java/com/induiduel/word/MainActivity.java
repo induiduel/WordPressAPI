@@ -23,7 +23,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         FilterArguments filterArguments = new FilterArguments("https://androidoyun.club/wp-json/wp/v2/posts");
-        String a = filterArguments.page(1).postPerPage(50).search("mine").order(FilterArguments.DESC).apply();
+        String a = filterArguments.page(1)
+                .postPerPage(50)
+                .search("minecraft")
+                .order(FilterArguments.DESC)
+                .orderBy(0)
+                .exclude(1)
+                .include(1)
+                .offset(2)
+                .tags(12)
+                .context(2)
+                .type(2)
+                .title("abc")
+                .apply();
+
+
         Log.wtf("Url", a);
         RequestNetwork requestNetwork = new RequestNetwork(this);
         requestNetwork.startRequestNetwork(RequestNetworkController.GET, a, "", new RequestNetwork.RequestListener() {
