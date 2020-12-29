@@ -167,6 +167,39 @@ public class Parameters {
         return this;
     }
 
+    public Parameters fields(String sb) {
+
+        list.add("_fields=" + sb.toLowerCase().trim());
+
+        return this;
+    }
+
+    /**
+     * Embed can be used only itself alone
+     *
+     * @return**/
+    public String embed(boolean bool) {
+        if (bool) {
+            return url + "?_embed";
+        }else {
+            return url;
+        }
+    }
+
+    /*public Parameters fields(ArrayList<String> arrayList) {
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < arrayList.size(); i++) {
+            if (i != 0) {
+                sb.append(",");
+            }
+            sb.append(arrayList.get(i));
+        }
+
+        list.add("_fields=" + sb.toString().toLowerCase().trim());
+        return this;
+    }*/
+
     public String apply() {
 
         StringBuilder sb = new StringBuilder();
