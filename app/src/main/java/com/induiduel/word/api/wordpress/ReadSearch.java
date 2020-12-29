@@ -51,23 +51,23 @@ public class ReadSearch {
     public static class Links {
 
         @SerializedName("self")
-        private ArrayList<ReadMedia.Links.Self> self;
+        private ArrayList<Self> self;
 
         @SerializedName("collection")
-        private ArrayList<ReadMedia.Links.Collection> collection;
+        private ArrayList<Collection> collection;
 
         @SerializedName("about")
-        private ArrayList<ReadMedia.Links.About> about;
+        private ArrayList<About> about;
 
-        public ArrayList<ReadMedia.Links.Self> getSelf() {
+        public ArrayList<Self> getSelf() {
             return self;
         }
 
-        public ArrayList<ReadMedia.Links.Collection> getCollection() {
+        public ArrayList<Collection> getCollection() {
             return collection;
         }
 
-        public ArrayList<ReadMedia.Links.About> getAbout() {
+        public ArrayList<About> getAbout() {
             return about;
         }
 
