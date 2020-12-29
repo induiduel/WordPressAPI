@@ -10,12 +10,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.induiduel.word.access.okhttp.RequestNetwork;
 import com.induiduel.word.access.okhttp.RequestNetworkController;
-import com.induiduel.word.api.wordpress.ReadCategories;
-import com.induiduel.word.api.wordpress.ReadComments;
-import com.induiduel.word.api.wordpress.ReadMedia;
-import com.induiduel.word.api.wordpress.ReadPosts;
-import com.induiduel.word.api.wordpress.ReadSearch;
-import com.induiduel.word.api.wordpress.ReadUsers;
+import com.induiduel.word.api.wordpress.read.ReadPosts;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -64,6 +59,36 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
             }
         });
+
+        String username = "induiduel";
+        String password = "dddd0909";
+
+        HashMap<String , Object> hashMap = new HashMap<>();
+        hashMap.put("first_name","kasim");
+        hashMap.put("last_name","turkan");
+        hashMap.put("username","induiduel");
+        hashMap.put("name","Kasim Turkan");
+        hashMap.put("nickname","induiduel");
+        hashMap.put("password","dddd0909");
+        hashMap.put("email","induiduel@gmail.com");
+
+        RequestNetwork requestUser = new RequestNetwork(this);
+        requestUser.setParams(hashMap, 0);
+        requestUser.startRequestNetwork(RequestNetworkController.POST,
+                "https://www.proevtasima.com/wp-json/wp/v2/users",
+                "",
+                new RequestNetwork.RequestListener() {
+                    @Override
+                    public void onResponse(String tag, String response, HashMap<String, Object> responseHeaders) {
+                        Log.wtf("Response", response);
+                    }
+
+                    @Override
+                    public void onErrorResponse(String tag, String message) {
+                        Log.wtf("Response Error", message);
+                    }
+                });
+
 
     }
 }

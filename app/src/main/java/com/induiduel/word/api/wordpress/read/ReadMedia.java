@@ -1,4 +1,4 @@
-package com.induiduel.word.api.wordpress;
+package com.induiduel.word.api.wordpress.read;
 
 import com.google.gson.annotations.SerializedName;
 
