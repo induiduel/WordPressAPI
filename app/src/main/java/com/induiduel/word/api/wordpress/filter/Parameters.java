@@ -3,7 +3,7 @@ package com.induiduel.word.api.wordpress.filter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FilterArguments {
+public class Parameters {
 
     public static int DATE = 0;             //date
     public static int AUTHOR = 1;           //author
@@ -30,32 +30,32 @@ public class FilterArguments {
     private String url;
     private List<String> list;
 
-    public FilterArguments(String url) {
+    public Parameters(String url) {
         this.url = url;
         this.list = new ArrayList<>();
     }
 
-    public FilterArguments postPerPage(int i) {
+    public Parameters postPerPage(int i) {
         list.add("per_page=" + i);
         return this;
     }
 
-    public FilterArguments page(int i) {
+    public Parameters page(int i) {
         list.add("page=" + i);
         return this;
     }
 
-    public FilterArguments search(String search) {
+    public Parameters search(String search) {
         list.add("search=" + search);
         return this;
     }
 
-    public FilterArguments title(String title) {
+    public Parameters title(String title) {
         list.add("title=" + title);
         return this;
     }
 
-    public FilterArguments order(int mode) {
+    public Parameters order(int mode) {
         if (mode == 1) {
             list.add("order=" + "asc");
         } else if (mode == 0) {
@@ -66,32 +66,32 @@ public class FilterArguments {
         return this;
     }
 
-    public FilterArguments order(String mode) {
+    public Parameters order(String mode) {
         list.add("order=" + mode.toLowerCase().trim());
         return this;
     }
 
-    public FilterArguments include(int id) {
+    public Parameters include(int id) {
         list.add("include=" + id);
         return this;
     }
 
-    public FilterArguments exclude(int id) {
+    public Parameters exclude(int id) {
         list.add("exclude=" + id);
         return this;
     }
 
-    public FilterArguments offset(int number) {
+    public Parameters offset(int number) {
         list.add("offset=" + number);
         return this;
     }
 
-    public FilterArguments tags(int tag) {
+    public Parameters tags(int tag) {
         list.add("tags=" + tag);
         return this;
     }
 
-    public FilterArguments orderBy(int mode) {
+    public Parameters orderBy(int mode) {
         if (mode == 0) {
             list.add("orderby=" + "date");
         } else if (mode == 1) {
@@ -118,14 +118,14 @@ public class FilterArguments {
         return this;
     }
 
-    public FilterArguments orderBy(String mode) {
+    public Parameters orderBy(String mode) {
 
         list.add("orderby=" + mode.toLowerCase().trim());
 
         return this;
     }
 
-    public FilterArguments context(int mode) {
+    public Parameters context(int mode) {
         if (mode == 0) {
             list.add("context=" + "view");
         } else if (mode == 1) {
@@ -139,14 +139,14 @@ public class FilterArguments {
         return this;
     }
 
-    public FilterArguments context(String mode) {
+    public Parameters context(String mode) {
 
         list.add("context=" + mode.toLowerCase().trim());
 
         return this;
     }
 
-    public FilterArguments type(int mode) {
+    public Parameters type(int mode) {
         if (mode == 0) {
             list.add("type=" + "post");
         } else if (mode == 1) {
@@ -160,7 +160,7 @@ public class FilterArguments {
         return this;
     }
 
-    public FilterArguments type(String mode) {
+    public Parameters type(String mode) {
 
         list.add("type=" + mode.toLowerCase().trim());
 

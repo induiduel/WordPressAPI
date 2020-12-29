@@ -10,7 +10,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.induiduel.word.access.okhttp.RequestNetwork;
 import com.induiduel.word.access.okhttp.RequestNetworkController;
-import com.induiduel.word.api.wordpress.filter.FilterArguments;
+import com.induiduel.word.api.wordpress.filter.Parameters;
 import com.induiduel.word.api.wordpress.read.ReadPosts;
 
 import java.util.ArrayList;
@@ -22,11 +22,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        FilterArguments filterArguments = new FilterArguments("https://androidoyun.club/wp-json/wp/v2/posts");
-        String a = filterArguments.page(1)
+        Parameters parameters = new Parameters("https://androidoyun.club/wp-json/wp/v2/posts");
+        String a = parameters.page(1)
                 .postPerPage(50)
                 .search("minecraft")
-                .order(FilterArguments.DESC)
+                .order(Parameters.DESC)
                 .orderBy(0)
                 .exclude(1)
                 .include(1)
@@ -78,25 +78,12 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onErrorResponse(String tag, String message) {
-
+                Log.wtf("Response Error", message);
                 Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
             }
         });
-
-        String username = "induiduel";
-        String password = "dddd0909";
-
-        HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put("first_name", "kasim");
-        hashMap.put("last_name", "turkan");
-        hashMap.put("username", "induiduel");
-        hashMap.put("name", "Kasim Turkan");
-        hashMap.put("nickname", "induiduel");
-        hashMap.put("password", "dddd0909");
-        hashMap.put("email", "induiduel@gmail.com");
-
         RequestNetwork requestUser = new RequestNetwork(this);
-        requestUser.setParams(hashMap, 0);
+
         requestUser.startRequestNetwork(RequestNetworkController.POST,
                 "https://www.proevtasima.com/wp-json/wp/v2/users",
                 "",
@@ -111,7 +98,6 @@ public class MainActivity extends AppCompatActivity {
                         Log.wtf("Response Error", message);
                     }
                 });
-
 
     }
 }

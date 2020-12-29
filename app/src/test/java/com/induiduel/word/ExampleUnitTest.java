@@ -1,10 +1,8 @@
 package com.induiduel.word;
 
-import com.induiduel.word.api.wordpress.filter.FilterArguments;
+import com.induiduel.word.api.wordpress.filter.Parameters;
 
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -15,11 +13,11 @@ public class ExampleUnitTest {
 
     @Test
     public void aa () {
-        FilterArguments filterArguments = new FilterArguments("https://androidoyun.club/wp-json/wp/v2/posts");
-        String a = filterArguments.page(1)
+        Parameters parameters = new Parameters("https://androidoyun.club/wp-json/wp/v2/posts");
+        String a = parameters.page(1)
                 .postPerPage(50)
                 .search("minecraft")
-                .order(FilterArguments.DESC)
+                .order(Parameters.DESC)
                 .orderBy(0)
                 .exclude(1)
                 .offset(0)
