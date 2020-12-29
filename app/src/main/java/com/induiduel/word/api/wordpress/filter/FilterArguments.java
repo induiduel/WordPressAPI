@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FilterArguments {
+
     public static int DATE = 0; //date
     public static int AUTHOR = 1; //author
     public static int ID = 2; //id
@@ -14,8 +15,17 @@ public class FilterArguments {
     public static int SLUG = 7; //slug
     public static int INCLUDE_SLUGS = 8; //include_slugs
     public static int TITLE = 9; //title
+
     public static int DESC = 0; //desc
     public static int ASC = 1; //asc
+
+    public static int VIEW = 0; //view
+    public static int EMBED = 1; //embed
+    public static int EDIT = 2; //edit
+
+    public static int POST = 0; //post
+    public static int TERM = 1; //term
+    public static int POST_FORMAT = 2; //post-format
 
     private String url;
     private List<String> list;
@@ -98,7 +108,36 @@ public class FilterArguments {
         return this;
     }
 
-    public String get() {
+    public FilterArguments context(int mode){
+        if (mode == 0){
+            list.add("context="+ "view");
+        }else if(mode == 1){
+            list.add("context="+ "embed");
+        }else if (mode == 2){
+            list.add("context="+ "edit");
+        }else{
+            list.add("context="+ "view");
+        }
+
+        return this;
+    }
+
+    public FilterArguments type(int mode){
+        if (mode == 0){
+            list.add("type="+ "post");
+        }else if(mode == 1){
+            list.add("type="+ "term");
+        }else if (mode == 2){
+            list.add("type="+ "post-format");
+        }else{
+            list.add("type="+ "post");
+        }
+
+        return this;
+    }
+
+
+    public String apply() {
 
         StringBuilder sb = new StringBuilder();
         sb.append(url);
