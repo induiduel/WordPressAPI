@@ -10,6 +10,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.induiduel.word.access.okhttp.RequestNetwork;
 import com.induiduel.word.access.okhttp.RequestNetworkController;
+import com.induiduel.word.api.wordpress.filter.FilterArguments;
 import com.induiduel.word.api.wordpress.read.ReadPosts;
 
 import java.util.ArrayList;
@@ -21,22 +22,36 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        FilterArguments filterArguments = new FilterArguments("https://androidoyun.club/wp-json/wp/v2/posts");
+        String a = filterArguments.page(1)
+                .postPerPage(50)
+                .search("mine")
+                .order(FilterArguments.DESC)
+                .exclude(42322)
+                .orderBy(FilterArguments.MODIFIED)
+                .get();
+        Log.wtf("Url", a);
         RequestNetwork requestNetwork = new RequestNetwork(this);
-        requestNetwork.startRequestNetwork(RequestNetworkController.GET, "https://androidoyun.club/wp-json/wp/v2/posts", "", new RequestNetwork.RequestListener() {
+        requestNetwork.startRequestNetwork(RequestNetworkController.GET, a, "", new RequestNetwork.RequestListener() {
             @Override
             public void onResponse(String tag, String response, HashMap<String, Object> responseHeaders) {
 
-                ArrayList<ReadPosts> readPostsArrayList = new Gson().fromJson(response, new TypeToken<ArrayList<ReadPosts>>(){}.getType());
-               /* ArrayList<ReadComments> readCommentsArrayList = new Gson().fromJson(response, new TypeToken<ArrayList<ReadComments>>(){}.getType());
+
+                ArrayList<ReadPosts> readPostsArrayList = new Gson().fromJson(response, new TypeToken<ArrayList<ReadPosts>>() {
+                }.getType());
+                for (int a = 0; a < readPostsArrayList.size(); a++) {
+                    Log.wtf("Get Slug", readPostsArrayList.get(a).getSlug());
+                }
+
+                Log.wtf("Get WpTerm Href", readPostsArrayList.get(0).getLinks().getWpTerm().get(0).getHref());
+
+/*
+                 ArrayList<ReadComments> readCommentsArrayList = new Gson().fromJson(response, new TypeToken<ArrayList<ReadComments>>(){}.getType());
                 ArrayList<ReadCategories> readCategoriesArrayList = new Gson().fromJson(response, new TypeToken<ArrayList<ReadCategories>>(){}.getType());
                 ArrayList<ReadMedia> readMediaArrayList = new Gson().fromJson(response, new TypeToken<ArrayList<ReadMedia>>(){}.getType());
                 ArrayList<ReadUsers> readUsersArrayList= new Gson().fromJson(response, new TypeToken<ArrayList<ReadUsers>>(){}.getType());
                 ArrayList<ReadSearch> readSearchArrayList= new Gson().fromJson(response, new TypeToken<ArrayList<ReadSearch>>(){}.getType());
-*/
-                Log.wtf("Get Slug", readPostsArrayList.get(0).getSlug());
-                Log.wtf("Get WpTerm Href", readPostsArrayList.get(0).getLinks().getWpTerm().get(0).getHref());
 
-/*
                 Log.wtf("Get Media Size", readMediaArrayList.get(0).getMediaDetails().getSizes().getProjectThumb2x().getSourceUrl());
                 Log.wtf("Get Media Meta", readMediaArrayList.get(0).getMediaDetails().getImageMeta().getTitle());
                 Log.wtf("Get Media Links", readMediaArrayList.get(0).getLinks().getAbout().get(0).getHref());
@@ -63,14 +78,14 @@ public class MainActivity extends AppCompatActivity {
         String username = "induiduel";
         String password = "dddd0909";
 
-        HashMap<String , Object> hashMap = new HashMap<>();
-        hashMap.put("first_name","kasim");
-        hashMap.put("last_name","turkan");
-        hashMap.put("username","induiduel");
-        hashMap.put("name","Kasim Turkan");
-        hashMap.put("nickname","induiduel");
-        hashMap.put("password","dddd0909");
-        hashMap.put("email","induiduel@gmail.com");
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("first_name", "kasim");
+        hashMap.put("last_name", "turkan");
+        hashMap.put("username", "induiduel");
+        hashMap.put("name", "Kasim Turkan");
+        hashMap.put("nickname", "induiduel");
+        hashMap.put("password", "dddd0909");
+        hashMap.put("email", "induiduel@gmail.com");
 
         RequestNetwork requestUser = new RequestNetwork(this);
         requestUser.setParams(hashMap, 0);
