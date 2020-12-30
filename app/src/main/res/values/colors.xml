@@ -10,18 +10,31 @@
 
     <color name="colorPrimary">#1a73e8</color>
     <color name="colorPrimaryDark">#FFFFFF</color>
-    <color name="colorAccent">#1a73e8</color>
     <color name="colorControlHighlight">#FFFFFF</color>
     <color name="colorControlNormal">#FFFFFF</color>
-    <color name="beyaz">#ffffff</color>
 
-    <string name="beyaz" translatable="false">#ffffff</string>
-    <color name="colorPrimaryd">#1a73e8</color>
-    <color name="colorPrimaryDarkd">#202124</color>
-    <color name="colorAccentd">#1a73e8</color>
-    <color name="colorControlHighlightd">#202124</color>
-    <color name="colorControlNormald">#202124</color>
-    <color name="navcolor">#9c59b6</color>
-    <color name="gri">#5f6369</color>
-    <color name="koyugri">#202124</color>
+
+    <color name="colorPrimaryD">#1a73e8</color>
+    <color name="colorPrimaryDarkDark">#202124</color>
+    <color name="colorAccentDark">#1a73e8</color>
+    <color name="colorControlHighlightDark">#202124</color>
+    <color name="colorControlNormalDark">#202124</color>
+    <color name="navigationColor">#9c59b6</color>
+    <color name="grey">#5f6369</color>
+    <color name="darkGrey">#202124</color>
+
+    <color name="colorAccent">#303f9f</color>
+    <color name="colorBackground">#232426</color>
+    <color name="colorDark">#1a1b1c</color>
+    <color name="colorSuccess">#00a173</color>
+    <color name="colorWarning">#f9ab00</color>
+    <color name="colorError">#d93025</color>
+    <color name="colorMain">#303f9f</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorGreyLight">#9aa0a6</color>
+    <color name="colorGreyDark">#5f6369</color>
+    <color name="colorCremini">#dadce0</color>
+    <color name="colorGreen">#00a173</color>
+    <color name="colorBlue">#1a73e8</color>
+    <color name="colorLight">#f0f6fb</color>
 </resources>
