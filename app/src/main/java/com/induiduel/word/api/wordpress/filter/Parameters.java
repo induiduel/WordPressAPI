@@ -1,5 +1,10 @@
 package com.induiduel.word.api.wordpress.filter;
 
+import android.util.Log;
+import android.webkit.URLUtil;
+
+import com.induiduel.word.utils.InvalidUrl;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,9 +35,14 @@ public class Parameters {
     private String url;
     private List<String> list;
 
-    public Parameters(String url) {
-        this.url = url;
+    public Parameters(String main, String path) throws RuntimeException, InvalidUrl {
         this.list = new ArrayList<>();
+        if (URLUtil.isValidUrl(main+path)){
+            this.url = main + path;
+            Log.wtf("dd", url);
+        }else {
+            throw new InvalidUrl("Using of Invalid URL" + " : " + main + path);
+        }
     }
 
     public Parameters postPerPage(int i) {

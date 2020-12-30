@@ -25,8 +25,8 @@ public class JsonConverter {
         return new Gson().toJson(arrayList);
     }
 
-    public static <T> T loadGson(String js) {
-        return new Gson().fromJson(js, new TypeToken<T>(){}.getType());
+    public static <T>  T loadGson(String js) {
+        return new Gson().fromJson(js, new TypeToken<ArrayList<T>>(){}.getType());
     }
 
 }
