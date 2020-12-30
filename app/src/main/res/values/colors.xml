@@ -7,4 +7,21 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="colorPrimary">#1a73e8</color>
+    <color name="colorPrimaryDark">#FFFFFF</color>
+    <color name="colorAccent">#1a73e8</color>
+    <color name="colorControlHighlight">#FFFFFF</color>
+    <color name="colorControlNormal">#FFFFFF</color>
+    <color name="beyaz">#ffffff</color>
+
+    <string name="beyaz" translatable="false">#ffffff</string>
+    <color name="colorPrimaryd">#1a73e8</color>
+    <color name="colorPrimaryDarkd">#202124</color>
+    <color name="colorAccentd">#1a73e8</color>
+    <color name="colorControlHighlightd">#202124</color>
+    <color name="colorControlNormald">#202124</color>
+    <color name="navcolor">#9c59b6</color>
+    <color name="gri">#5f6369</color>
+    <color name="koyugri">#202124</color>
 </resources>

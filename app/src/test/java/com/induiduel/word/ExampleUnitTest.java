@@ -12,27 +12,26 @@ import org.junit.Test;
 public class ExampleUnitTest {
 
     @Test
-    public void aa () {
-        Parameters parameters = new Parameters("https://androidoyun.club/wp-json/wp/v2/posts");
-        String a = parameters
-                .page(1)
-                .postPerPage(50)
-                .search("minecraft")
-                .order(Parameters.DESC)
-                .orderBy(0)
-                .exclude(1)
-                .offset(0)
-                .context(0)
-                .type(0)
-                .title("abc")
-                .fields("id,title.rendered,slug,link")
-                .apply();
+    public void aa() {
+                /*
+                ArrayList<ReadComments> readCommentsArrayList = new Gson().fromJson(response, new TypeToken<ArrayList<ReadComments>>(){}.getType());
+                ArrayList<ReadCategories> readCategoriesArrayList = new Gson().fromJson(response, new TypeToken<ArrayList<ReadCategories>>(){}.getType());
+                ArrayList<ReadMedia> readMediaArrayList = new Gson().fromJson(response, new TypeToken<ArrayList<ReadMedia>>(){}.getType());
+                ArrayList<ReadUsers> readUsersArrayList= new Gson().fromJson(response, new TypeToken<ArrayList<ReadUsers>>(){}.getType());
+                ArrayList<ReadSearch> readSearchArrayList= new Gson().fromJson(response, new TypeToken<ArrayList<ReadSearch>>(){}.getType());
 
-        System.out.println(a);
+                Log.wtf("Get Media Size", readMediaArrayList.get(0).getMediaDetails().getSizes().getProjectThumb2x().getSourceUrl());
+                Log.wtf("Get Media Meta", readMediaArrayList.get(0).getMediaDetails().getImageMeta().getTitle());
+                Log.wtf("Get Media Links", readMediaArrayList.get(0).getLinks().getAbout().get(0).getHref());
 
-        Parameters parameterss = new Parameters("https://androidoyun.club/wp-json/wp/v2/posts");
-        String aa = parameters.embed(true);
+                Log.wtf("Get Users Name",readUsersArrayList.get(0).getName());
 
-        System.out.println(aa);
+                Log.wtf("Get Search Url", readSearchArrayList.get(0).getUrl());
+
+                Log.wtf("Get Comment", readCommentsArrayList.get(0).getContent().getRendered());
+                Log.wtf("Get Author Url", readCommentsArrayList.get(0).getAuthorAvatarUrls().getUrl96px());
+
+                Log.wtf("Get Comment", readCategoriesArrayList.get(0).getLink());
+                */
     }
 }
