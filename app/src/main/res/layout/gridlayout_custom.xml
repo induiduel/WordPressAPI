@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/lin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="6dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/headText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:focusable="false"
+                android:gravity="center_vertical"
+                android:lines="2"
+                android:paddingTop="4dp"
+                android:paddingBottom="2dp"
+                android:text="Angry Birds"
+                android:textStyle="bold"
+                android:textColor="@color/darkGrey"
+                android:textSize="16sp"
+                tools:ignore="Suspicious0dp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:focusable="false"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_menu_third" />
+
+        <LinearLayout
+            android:id="@+id/alt_lin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|right"
+            android:orientation="horizontal"
+            android:paddingTop="4dp">
+            <TextView
+                android:id="@+id/authorText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:paddingLeft="12dp"
+                android:paddingRight="8dp"
+                android:text="Admin"
+                android:textColor="#757575"
+                android:textSize="11sp" />
+            <TextView
+                android:id="@+id/byt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:paddingLeft="12dp"
+                android:paddingRight="8dp"
+                android:text="20-12-2021"
+                android:textColor="#757575"
+                android:textSize="11sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:paddingTop="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/excerptText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:lines="2"
+                android:paddingTop="1dp"
+                android:text="Ürün açıklaması buraya gelecek ve baya uzayabilecek çok sıkıntılı bir durum gerçekten her neyse güzel olacak"
+                android:textColor="@color/colorGreyDark"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/devamBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="@color/colorGreen"
+                android:padding="10dp"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:text="Devamını Oku..."/>
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

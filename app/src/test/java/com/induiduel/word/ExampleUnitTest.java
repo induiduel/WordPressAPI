@@ -1,6 +1,9 @@
 package com.induiduel.word;
 
+import com.induiduel.word.access.okhttp.RequestNetwork;
+import com.induiduel.word.access.okhttp.RequestNetworkController;
 import com.induiduel.word.api.wordpress.filter.Parameters;
+import com.induiduel.word.api.wordpress.read.ReadPosts;
 
 import org.junit.Test;
 
@@ -34,4 +37,5 @@ public class ExampleUnitTest {
                 Log.wtf("Get Comment", readCategoriesArrayList.get(0).getLink());
                 */
     }
+
 }

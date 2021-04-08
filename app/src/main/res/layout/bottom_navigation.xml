@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"
-    app:backgroundTint="@color/beyaz"
+    app:backgroundTint="@color/white"
     app:itemIconTint="@drawable/bottom_nav_colors"
     app:itemTextColor="@drawable/bottom_nav_colors"
     app:labelVisibilityMode="labeled"

@@ -18,18 +18,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:elevation="10dp"
             android:orientation="horizontal">
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:paddingStart="4dp"
+                android:layout_height="match_parent"
+                tools:ignore="RtlSymmetry">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="4dp"
                     android:layout_gravity="center_vertical"
                     android:fontFamily="monospace"
+                    android:padding="4dp"
                     android:text="Anasayfa"
                     android:textColor="@color/darkGrey"
                     android:textSize="18sp"
@@ -70,6 +73,14 @@
             android:layout_height="match_parent"
             android:layout_below="@+id/topContainer"
             android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:clipToPadding="false"
+                android:foreground="?android:attr/selectableItemBackground" />
 
         </LinearLayout>
 

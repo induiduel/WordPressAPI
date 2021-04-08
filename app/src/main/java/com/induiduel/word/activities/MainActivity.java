@@ -1,27 +1,45 @@
 package com.induiduel.word.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
 import com.induiduel.word.R;
-import com.induiduel.word.access.okhttp.RequestNetwork;
-import com.induiduel.word.access.okhttp.RequestNetworkController;
-import com.induiduel.word.api.wordpress.filter.Parameters;
-import com.induiduel.word.api.wordpress.read.ReadPosts;
-import com.induiduel.word.config.InitializeApp;
-import com.induiduel.word.utils.InvalidUrl;
-import com.induiduel.word.utils.JsonConverter;
+import com.induiduel.wordpress.config.InitializeApp;
+import com.induiduel.wordpress.okhttp.RequestNetwork;
+import com.induiduel.wordpress.okhttp.RequestNetworkController;
+import com.induiduel.wordpress.wp.filter.Parameters;
+import com.induiduel.wordpress.wp.read.ReadPosts;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
+
+    RecyclerView recyclerView;
+    ArrayList<HashMap<String, Object>> arrayComment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,54 +49,167 @@ public class MainActivity extends AppCompatActivity {
         onLayoutInit();
         onLogicInit();
         onClickInit();
+
+
     }
 
     public void onCreateInit() {
-        InitializeApp.url = "https://androidoyun.club/wp-json/wp/v2/";
+        // InitializeApp.url = "https://androidoyun.club/wp-json/wp/v2/";
+         InitializeApp.url = "https://notalarim.com/wp-json/wp/v2/";
     }
 
-    public void onLayoutInit(){
-
+    public void onLayoutInit() {
+        recyclerView = findViewById(R.id.recycler_view);
     }
 
     public void onLogicInit() {
 
         try {
             Parameters parameters = new Parameters(InitializeApp.url, "posts");
-            String a = parameters.page(1).postPerPage(50).search("minecraft").order(Parameters.DESC)
-                    .orderBy(0).context(0).type(0).title("abc").apply();
-
+            String a = parameters.apply();
+            Log.wtf("URL CUSTOM", a);
             RequestNetwork requestNetwork = new RequestNetwork(this);
 
             requestNetwork.startRequestNetwork(RequestNetworkController.GET, a, "tag", new RequestNetwork.RequestListener() {
                 @Override
                 public void onResponse(String tag, String response, HashMap<String, Object> responseHeaders) {
+                    if(response.contains("rest_invalid_param")){
+                        Log.wtf("REST", response);
+                    }else{
+                        Log.wtf("ELSE WORKS", response);
+                        try {
+                            Log.wtf("TRY WORKS", "a");
+                            PostActivity.RESPONSE = response;
+                            ArrayList<ReadPosts> readPostsArrayList = new Gson().fromJson(response, new TypeToken<ArrayList<ReadPosts>>() {
+                            }.getType());
 
-                    try {
-                        ArrayList<ReadPosts> readPostsArrayList = new Gson().fromJson(response, new TypeToken<ArrayList<ReadPosts>>() {}.getType());
-                        for ( int i = 0; i < readPostsArrayList.size(); i++){
+                            for (int i = 0; i < readPostsArrayList.size(); i++) {
 
-                            Log.wtf("My Gudniz" , readPostsArrayList.get(i).getSlug());
+                                Log.wtf("POST SLUGS", readPostsArrayList.get(i).getSlug());
 
+                            }
+                            Log.wtf("POST DATE", readPostsArrayList.get(0).getContentDate());
+                            recyclerView.setAdapter(new RecyclerViewAdapterMain(readPostsArrayList));
+                            recyclerView.setLayoutManager(new LinearLayoutManager(getParent()));
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            Log.wtf(e.toString(), "response");
                         }
-                    } catch (Exception e){
-                        Log.wtf(e.toString(), response);
                     }
+
 
                 }
 
                 @Override
                 public void onErrorResponse(String tag, String message) {
-                    Log.wtf("Oh May Gud Error", message);
+                    Log.wtf("POSTS RESPONSE ERROR", message);
                 }
             });
 
         } catch (Exception e) {
-            Log.wtf(" sss " ,  e.toString());
+            Log.wtf(" TRY CATCH ERROR POST ", e.toString());
         }
 
     }
 
-    public void onClickInit() {}
+    public void onClickInit() {
+    }
+
+    public class RecyclerViewAdapterMain extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+        ArrayList<ReadPosts> _data;
+
+        public RecyclerViewAdapterMain(ArrayList<ReadPosts> _arr) {
+            _data = _arr;
+        }
+
+        @NonNull
+        @Override
+        public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            LayoutInflater _inflater = (LayoutInflater) getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View _v = _inflater.inflate(R.layout.gridlayout_custom, parent, false);
+            return new ViewHolder(_v);
+        }
+
+        @SuppressLint("SetTextI18n")
+        @Override
+        public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int _position) {
+            View _view = holder.itemView;
+
+            final LinearLayout lin = _view.findViewById(R.id.lin);
+            final TextView headerText = _view.findViewById(R.id.headText);
+           // final TextView excerptText = _view.findViewById(R.id.excerptText);
+            //final TextView comments = _view.findViewById(R.id.comments);
+          //  final TextView dateText = _view.findViewById(R.id.dateText);
+            final ImageView image = _view.findViewById(R.id.image);
+            final Button button = _view.findViewById(R.id.devamBtn);
+            image.setClipToOutline(true);
+            GradientDrawable gd = new GradientDrawable();
+            gd.setCornerRadius(16);
+            gd.setColor(Color.parseColor("#fefefe"));
+            lin.setBackground(gd);
+
+            GradientDrawable gradientButton = new GradientDrawable();
+            gradientButton.setCornerRadius(16);
+            gradientButton.setColor(getColor(R.color.colorGreen));
+            button.setBackground(gradientButton);
+
+            headerText.setText(_data.get(_position).getTitle().getRendered());
+            //excerptText.setText(Html.fromHtml(_data.get(_position).getExcerpt().getRendered()));
+
+            int idPost = _data.get(_position).getContentId();
+
+            //String newDate = _data.get(_position).getContentDate().substring(0,_data.get(_position).getContentDate().indexOf("T"));
+            //dateText.setText(newDate);
+
+            Pattern p = Pattern.compile("<p><a href=\\\"(.*?)\"><img loading=\\\"(.*?)\\\" class=\\\"(.*?)\" src=\\\"(.*?)\".*<\\/a>", Pattern.DOTALL);
+            Matcher m = p.matcher(_data.get(_position).getContent().getRendered());
+
+            while (m.find()) {
+                if (m.group(1).length() > 15) {
+
+                    Log.wtf("API KEY IS REGEX 1", m.group(1) + "\n\n\n");
+
+                    Picasso.get().load(m.group(1)).into(image);
+                    GradientDrawable imageShape = new GradientDrawable();
+                    imageShape.setCornerRadius(26);
+                    image.setBackground(imageShape);
+                }
+            }
+            Log.wtf("Media URL", _data.get(_position).getLinks().getWpAttachment().get(0).getHref());
+            Log.wtf("Comments URL", _data.get(_position).getLinks().getReplies().get(0).getHref());
+
+
+            lin.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent intent = new Intent(getApplicationContext(), PostActivity.class);
+
+                    intent.putExtra("postPosition", _position);
+                    startActivity(intent);
+                }
+            });
+
+        }
+
+        @Override
+        public long getItemId(int _index) {
+            return _index;
+        }
+
+        @Override
+        public int getItemCount() {
+            return _data.size();
+            // return (_data == null) ? 0 : _data.size();
+        }
+
+        public class ViewHolder extends RecyclerView.ViewHolder {
+            public ViewHolder(@NonNull View itemView) {
+                super(itemView);
+            }
+        }
+    }
+
 
 }
