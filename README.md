@@ -63,4 +63,4 @@ for (int i = 0; i < readPostsArrayList.size(); i++) {
 ```
 
 #### Contact
-[![N|Circle](https://cdn.r10.net/image.php?u=121169)](https://www.instagram.com/nofrost.life/)
+##### _@nofrost.life_
