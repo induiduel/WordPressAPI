@@ -63,4 +63,42 @@ for (int i = 0; i < readPostsArrayList.size(); i++) {
 ```
 
 
+
+### Documentation
+
+
+------------
+
+
+
+| ReadPost  |     Description          |
+| ------------- | ------------------------------ |
+| `getSlug()`      | Return Post Slug     `String `    |
+| `getContentId()`   | Return Post ID  `int `   |
+| `getContentDate()`      | Return Post Date `String `     |
+| `getContentDateGmt()`   | Return Post Date `String `     |
+| `getGuid()`      | Return Post Guid     `Guid ` &raquo;   `String `  |
+| `getModified()`   | Return Post Modified   `String `   |
+| `getModifiedGmt()`      | Return Post Modified GMT  `String `     |
+| `getStatus()`   | Return Post Status `String `     |
+| `getType()`      | Return Post Type    `String `    |
+| `getLink()`   | Return Post Link  `String `   |
+| `getTitle()`      | Return Post Title `Title ` &raquo;   `String `    |
+| `getContent()`   | Return Post Content `Content `   &raquo;   `String `    |
+| `getExcerpt()`      | Return Post Excerpt     `Excerpt ` &raquo;   `String `  |
+| `getAuthor()`   | Return Post Author   `String `   |
+| `getFeatured_media()`      | Return Post Featured Media  `String `     |
+| `getComment_status()`   | Return Post Comment Status `String `     |
+| `getPing_status()`   | Return Post Ping Status   `String `   |
+| `getSticky()`      | Return Post Sticky  `String `     |
+| `getTemplate()`   | Return Post Template `String `     |
+| `getFormat()`   | Return Post Format `String `     |
+
+
+
+
+
+
+
+
 ##### _[@nofrost.life](https://www.instagram.com/nofrost.life/)_
