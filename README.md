@@ -41,8 +41,7 @@ String mUrl = parameters.page(0).apply();
 You can use other parameters to return specific values from URL
 
 ```java
-String mUrl = parameters.page(0)
-.postPerPage(10).search("football").apply();
+String mUrl = parameters.page(0).postPerPage(10).search("football").apply();
 ```
 
 Then you must request to the URL and put into the class
