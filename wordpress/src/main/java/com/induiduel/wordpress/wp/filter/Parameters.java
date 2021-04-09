@@ -39,7 +39,6 @@ public class Parameters {
         this.list = new ArrayList<>();
         if (URLUtil.isValidUrl(main+path)){
             this.url = main + path;
-            Log.wtf("dd", url);
         }else {
             throw new InvalidUrl("Using of Invalid URL" + " : " + main + path);
         }
@@ -50,7 +49,6 @@ public class Parameters {
         this.list = new ArrayList<>();
         if (URLUtil.isValidUrl(main)){
             this.url = main;
-            Log.wtf("dd", url);
         }else {
             throw new InvalidUrl("Using of Invalid URL" + " : " + main);
         }
