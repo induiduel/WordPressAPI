@@ -98,7 +98,7 @@ for (int i = 0; i < readPostsArrayList.size(); i++) {
 | `getTags()`   | Return Post  Tags ` ArrayList<Integer>`  |
 | `getYoastHead()`   | Return Post YoastHead ` String`    |
 | `getLinks()`   | Return Post  Links ` Links`   |
-
+>
 | ReadPost &raquo; Links  |   |
 | ------------- | ------------------------------ |
 | `getLinks()`   |  ` getAbout()`   |
