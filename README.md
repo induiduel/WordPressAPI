@@ -2,7 +2,7 @@
 ##### Implementation
 - Add the JitPack repository to your root build.gradle file
 
-```
+```gradle
 	allprojects {
 		repositories {
 			...
@@ -13,7 +13,7 @@
 
 - Add the dependency
 
-```
+```gradle
 dependencies {
 	        implementation 'com.github.induiduel:wordpressapi:1.0.1'
 	}
