@@ -131,6 +131,7 @@ for (int i = 0; i < readPostsArrayList.size(); i++) {
 
 | Parameters  | Description |
 | ------------- | ------------------- |
+| Parameters(String main, String path)  |  Input main url and Path |
 | apply()  |  Returns String to User  |
 
 
