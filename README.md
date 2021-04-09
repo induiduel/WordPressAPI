@@ -63,4 +63,4 @@ for (int i = 0; i < readPostsArrayList.size(); i++) {
 ```
 
 #### Contact
-[![N|Solid](https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png)](https://www.instagram.com/nofrost.life/)
+[![N|Solid](https://github.com/paulrobertlloyd/socialmediaicons/blob/main/instagram-32x32.png?raw=true)](https://www.instagram.com/nofrost.life/)
