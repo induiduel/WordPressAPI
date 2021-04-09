@@ -1,5 +1,5 @@
 ## Wordpress API
-##### Implementation
+### Implementation
 - Add the JitPack repository to your root build.gradle file
 
 ```gradle
