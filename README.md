@@ -100,7 +100,7 @@ for (int i = 0; i < readPostsArrayList.size(); i++) {
 | `getLinks()`   | Return Post  Links ` Links`   |
 
 
-#####Links in ReadPost
+##### Links in ReadPost
 
 
 | ReadPost &raquo; Links  |   |
@@ -110,7 +110,7 @@ for (int i = 0; i < readPostsArrayList.size(); i++) {
 |` getVersionHistory()`   |` getCuries()`   |
 |` getWpAttachment()`   |` getWpTerm()`   |
 
-#####Pagination with Parameters
+##### Pagination with Parameters
 
 | Parameters  | Pagination|
 | ------------- | ------------------- |
