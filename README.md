@@ -22,7 +22,7 @@ dependencies {
 [![](https://jitpack.io/v/induiduel/wordpressapi.svg)](https://jitpack.io/#induiduel/wordpressapi) 
 
 
-### Documentation
+### Example
 
 Create a new project and  add the main URL with Wordpress API location.
 
