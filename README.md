@@ -15,8 +15,8 @@
 
 ```gradle
 dependencies {
-	        implementation 'com.github.induiduel:wordpressapi:1.0.2'
-	}
+	implementation 'com.github.induiduel:wordpressapi:1.0.2'
+}
 ```
 
 [![](https://jitpack.io/v/induiduel/wordpressapi.svg)](https://jitpack.io/#induiduel/wordpressapi) 
