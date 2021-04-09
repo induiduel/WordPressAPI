@@ -93,7 +93,18 @@ for (int i = 0; i < readPostsArrayList.size(); i++) {
 | `getSticky()`      | Return Post Sticky  `String `     |
 | `getTemplate()`   | Return Post Template `String `     |
 | `getFormat()`   | Return Post Format `String `     |
+| `getMeta()`   | Return Post Meta ` ArrayList<String>`|
+| `getCategories()`   | Return Post Categories  ` ArrayList<Integer>`   |
+| `getTags()`   | Return Post  Tags ` ArrayList<Integer>`  |
+| `getYoastHead()`   | Return Post YoastHead ` String`    |
+| `getLinks()`   | Return Post  Links ` Links`   |
 
+| ReadPost &raquo; Links  |   |
+| ------------- | ------------------------------ |
+| `getLinks()`   |  ` getAbout()`   |
+|` getAuthor()`   |` getReplies()`   |
+|` getVersionHistory()`   |` getCuries()`   |
+|` getWpAttachment()`   |` getWpTerm()`   |
 
 
 
