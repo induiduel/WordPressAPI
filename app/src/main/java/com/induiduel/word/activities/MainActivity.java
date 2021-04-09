@@ -54,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onCreateInit() {
-        // InitializeApp.url = "https://androidoyun.club/wp-json/wp/v2/";
-         InitializeApp.url = "https://notalarim.com/wp-json/wp/v2/";
+        // Change Your URL
+        InitializeApp.url = "https://androidoyun.club/wp-json/wp/v2/";
     }
 
     public void onLayoutInit() {
@@ -65,36 +65,51 @@ public class MainActivity extends AppCompatActivity {
     public void onLogicInit() {
 
         try {
+            // Change PATH to request in a specific location
             Parameters parameters = new Parameters(InitializeApp.url, "posts");
-            String a = parameters.apply();
-            Log.wtf("URL CUSTOM", a);
+            // Change PARAMETERS to request in a specific location
+            String mUrl = parameters.page(0).apply();
+
+            // See your URL
+            Log.wtf("URL CUSTOMISED", mUrl);
             RequestNetwork requestNetwork = new RequestNetwork(this);
 
-            requestNetwork.startRequestNetwork(RequestNetworkController.GET, a, "tag", new RequestNetwork.RequestListener() {
+            requestNetwork.startRequestNetwork(RequestNetworkController.GET, mUrl, "tag", new RequestNetwork.RequestListener() {
                 @Override
                 public void onResponse(String tag, String response, HashMap<String, Object> responseHeaders) {
-                    if(response.contains("rest_invalid_param")){
+                    // Your request has a response
+                    if (response.contains("rest_invalid_param")) {
+                        // Something went wrong
                         Log.wtf("REST", response);
-                    }else{
-                        Log.wtf("ELSE WORKS", response);
+                    } else {
+                        // Your Response is readable
+                        Log.wtf("Everything fine", response);
                         try {
-                            Log.wtf("TRY WORKS", "a");
+                            // Save response in a static variable
                             PostActivity.RESPONSE = response;
+
+                            // Read your RESPONSE through ReadPost (change class if you request to an another path)
                             ArrayList<ReadPosts> readPostsArrayList = new Gson().fromJson(response, new TypeToken<ArrayList<ReadPosts>>() {
                             }.getType());
 
+                            /*
+                             Now you can use the methods in your class
+                             */
                             for (int i = 0; i < readPostsArrayList.size(); i++) {
-
+                                //Returns all slugs
                                 Log.wtf("POST SLUGS", readPostsArrayList.get(i).getSlug());
 
                             }
+                            // Returns post date in 0.position
                             Log.wtf("POST DATE", readPostsArrayList.get(0).getContentDate());
+
+                            // Adding your values into a custom Adapter and show it in a list
                             recyclerView.setAdapter(new RecyclerViewAdapterMain(readPostsArrayList));
                             recyclerView.setLayoutManager(new LinearLayoutManager(getParent()));
 
                         } catch (Exception e) {
                             e.printStackTrace();
-                            Log.wtf(e.toString(), "response");
+                            Log.wtf("response", e.toString());
                         }
                     }
 
@@ -138,9 +153,9 @@ public class MainActivity extends AppCompatActivity {
 
             final LinearLayout lin = _view.findViewById(R.id.lin);
             final TextView headerText = _view.findViewById(R.id.headText);
-           // final TextView excerptText = _view.findViewById(R.id.excerptText);
+            // final TextView excerptText = _view.findViewById(R.id.excerptText);
             //final TextView comments = _view.findViewById(R.id.comments);
-          //  final TextView dateText = _view.findViewById(R.id.dateText);
+            //  final TextView dateText = _view.findViewById(R.id.dateText);
             final ImageView image = _view.findViewById(R.id.image);
             final Button button = _view.findViewById(R.id.devamBtn);
             image.setClipToOutline(true);
@@ -153,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
             gradientButton.setCornerRadius(16);
             gradientButton.setColor(getColor(R.color.colorGreen));
             button.setBackground(gradientButton);
-
+            // An example to get titles
             headerText.setText(_data.get(_position).getTitle().getRendered());
             //excerptText.setText(Html.fromHtml(_data.get(_position).getExcerpt().getRendered()));
 
@@ -162,6 +177,7 @@ public class MainActivity extends AppCompatActivity {
             //String newDate = _data.get(_position).getContentDate().substring(0,_data.get(_position).getContentDate().indexOf("T"));
             //dateText.setText(newDate);
 
+            // You can also use regex to extract values from string
             Pattern p = Pattern.compile("<p><a href=\\\"(.*?)\"><img loading=\\\"(.*?)\\\" class=\\\"(.*?)\" src=\\\"(.*?)\".*<\\/a>", Pattern.DOTALL);
             Matcher m = p.matcher(_data.get(_position).getContent().getRendered());
 
