@@ -18,3 +18,5 @@ dependencies {
 	        implementation 'com.github.induiduel:wordpressapi:1.0.1'
 	}
 ```
+
+[![](https://jitpack.io/v/induiduel/wordpressapi.svg)](https://jitpack.io/#induiduel/wordpressapi) 
