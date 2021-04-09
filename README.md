@@ -15,7 +15,7 @@
 
 ```gradle
 dependencies {
-	        implementation 'com.github.induiduel:wordpressapi:1.0.1'
+	        implementation 'com.github.induiduel:wordpressapi:1.0.2'
 	}
 ```
 
