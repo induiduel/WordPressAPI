@@ -98,7 +98,11 @@ for (int i = 0; i < readPostsArrayList.size(); i++) {
 | `getTags()`   | Return Post  Tags ` ArrayList<Integer>`  |
 | `getYoastHead()`   | Return Post YoastHead ` String`    |
 | `getLinks()`   | Return Post  Links ` Links`   |
-Links in ReadPost
+
+
+#####Links in ReadPost
+
+
 | ReadPost &raquo; Links  |   |
 | ------------- | ------------------------------ |
 | `getLinks()`   |  ` getAbout()`   |
@@ -106,6 +110,28 @@ Links in ReadPost
 |` getVersionHistory()`   |` getCuries()`   |
 |` getWpAttachment()`   |` getWpTerm()`   |
 
+#####Pagination with Parameters
+
+| Parameters  | Pagination|
+| ------------- | ------------------- |
+| postPerPage(int i)  |  ` per_page=i`   |
+| page(int i)   |  ` page=i`   |
+| search(String search)   |  `search=search`   |
+| title(String title)  |  `title=title`   |
+| order(int mode)  | ` (0) order=desc` , ` (1) order=asc`    |
+| include(int id)   |  `include=id`   |
+| exclude(int id)  |  `exclude=id`   |
+| offset(int number)   |  `offset=number`   |
+| tags(int tag)   |  `tags=tag`   |
+| orderBy(String mode)   |  `orderby=mode`   |
+| context(String mode)  |  `context=mode`   |
+| type(String mode)   |  `type=mode`   |
+| fields(String sb)   |  `_fields=sb`   |
+| embed(boolean bool)   |  `?_embed`   |
+
+| Parameters  | Description |
+| ------------- | ------------------- |
+| apply()  |  Returns String to User  |
 
 
 
