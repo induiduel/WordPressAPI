@@ -62,5 +62,5 @@ for (int i = 0; i < readPostsArrayList.size(); i++) {
 }
 ```
 
-#### Contact
-##### _@nofrost.life_
+
+##### _[@nofrost.life](https://www.instagram.com/nofrost.life/)_
