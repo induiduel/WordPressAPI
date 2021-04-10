@@ -1,6 +1,5 @@
 package com.induiduel.wordpress.wp.filter;
 
-import android.util.Log;
 import android.webkit.URLUtil;
 
 import com.induiduel.wordpress.utils.InvalidUrl;
@@ -37,9 +36,9 @@ public class Parameters {
 
     public Parameters(String main, String path) throws RuntimeException, InvalidUrl {
         this.list = new ArrayList<>();
-        if (URLUtil.isValidUrl(main+path)){
+        if (URLUtil.isValidUrl(main + path)) {
             this.url = main + path;
-        }else {
+        } else {
             throw new InvalidUrl("Using of Invalid URL" + " : " + main + path);
         }
     }
@@ -47,12 +46,13 @@ public class Parameters {
     public Parameters(String main) throws RuntimeException, InvalidUrl {
 
         this.list = new ArrayList<>();
-        if (URLUtil.isValidUrl(main)){
+        if (URLUtil.isValidUrl(main)) {
             this.url = main;
-        }else {
+        } else {
             throw new InvalidUrl("Using of Invalid URL" + " : " + main);
         }
     }
+
     public Parameters postPerPage(int i) {
         list.add("per_page=" + i);
         return this;
@@ -195,11 +195,12 @@ public class Parameters {
     /**
      * Embed can be used only itself alone
      *
-     * @return**/
+     * @return
+     **/
     public String embed(boolean bool) {
         if (bool) {
             return url + "?_embed";
-        }else {
+        } else {
             return url;
         }
     }
@@ -226,9 +227,9 @@ public class Parameters {
         for (int i = 0; i < list.size(); i++) {
 
             if (i == 0) {
-                if(!url.contains("?")){
+                if (!url.contains("?")) {
                     sb.append("?");
-                }else{
+                } else {
                     sb.append("&");
                 }
             } else {
